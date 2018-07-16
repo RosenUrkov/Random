@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 
-export default class Game extends Component {
+export default class Answer extends Component {
   render() {
     return (
-      <div>
-        <h1>Answer</h1>
+      <div className="col-5">
+        {this.props.numbersSelected.reduce((selected,current,index) => {
+          if(current) {
+            selected.push(<span 
+              key={index+1} 
+              onClick={() => this.props.onNumberUnselected(index)}
+            >{index+1}</span>);
+          }
+
+          return selected;
+      }, [])}
       </div>
     );
   }
